@@ -16,6 +16,7 @@ admin::admin(QWidget *parent)
     //connect signals created from lecturer and student here with the data...
 }
 
+//Admin destructor
 admin::~admin()
 {
     delete ui;

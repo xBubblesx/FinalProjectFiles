@@ -36,3 +36,11 @@ void Lecturerscreen::on_logOutButton_clicked()
     emit showLogine();
 }
 
+
+void Lecturerscreen::on_searchstudentButton_clicked()
+{
+    srch.show();
+    srch.raise();
+    srch.activateWindow();
+}
+

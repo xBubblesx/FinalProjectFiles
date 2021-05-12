@@ -34,7 +34,7 @@ void Studentdialog::on_okButton_clicked()
     Gender = ui->studentGenderLine->text();
     Student stu(SID, Fname, Lname, Pwd, Email, Pno, Gender, DOB);
 
-    db.insertStudent(stu);
+    ui->resultLabel->setText(db.insertStudent(stu));
     ui->studentIDLine->clear();
     ui->studentFNLine->clear();
     ui->studentLNLine->clear();

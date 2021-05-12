@@ -151,7 +151,7 @@
 background-color: rgb(234, 234, 234);</string>
        </property>
        <property name="text">
-        <string>Cancel</string>
+        <string>EXIT</string>
        </property>
       </widget>
      </item>
@@ -162,7 +162,7 @@ background-color: rgb(234, 234, 234);</string>
 background-color: rgb(234, 234, 234);</string>
        </property>
        <property name="text">
-        <string>Login</string>
+        <string>LOGIN</string>
        </property>
       </widget>
      </item>

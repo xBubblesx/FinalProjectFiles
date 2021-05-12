@@ -22,8 +22,8 @@ class Database
 public:
     Database();
     QString insertStudent(Student );
-    void insertLecturer(Lecturer);
-    void insertCourse(Course);
+    QString insertLecturer(Lecturer);
+    QString insertCourse(Course);
     void findStudent(QString );
     void resetUserPwd(Reset);
     void suspendAccount(Suspend);

@@ -29,7 +29,7 @@ QString Database::insertStudent(Student s)
     try{
         if(FirstName.isEmpty() || LastName.isEmpty() || Gender.isEmpty() || Student_id.isEmpty() || BirthDate.isEmpty() || EmailAddress.isEmpty() || Password.isEmpty() || Phone_No.isEmpty())
         {
-           throw "A field is empty!! Please fill in all areas";
+            throw "A field is empty!! Please fill in all areas";
         }
 
         qDebug() << "INSERT INTO student (FirstName, LastName, Gender, Student_Id, BirthDate, EmailAddress, Password, Phone_No) VALUES "
@@ -63,9 +63,8 @@ QString Database::insertStudent(Student s)
     return res;
 }
 
-void Database::insertLecturer(Lecturer l)
+QString Database::insertLecturer(Lecturer l)
 {
-    // try{
     QString FirstName = l.getFirstName();
     QString LastName = l.getLastName();
     QString Gender = l.getGender();
@@ -74,63 +73,93 @@ void Database::insertLecturer(Lecturer l)
     QString EmailAddress = l.getEmailAddress();
     QString Password = l.getPassword();
     QString Phone_No = l.getPhoneNo();
+    QString res;
 
-    qDebug() << "INSERT INTO lecturer (FirstName, LastName, Gender, Lecturer_Id, BirthDate, EmailAddress, Password, Phone_No) VALUES "
+    try{
+        if(FirstName.isEmpty() || LastName.isEmpty() || Gender.isEmpty() || Lecturer_Id.isEmpty() || BirthDate.isEmpty() || EmailAddress.isEmpty() || Password.isEmpty()|| Phone_No.isEmpty())
+        {
+            res = "A field is empty, Please fill in all areas";
+            throw res;
+        }
+
+
+        qDebug() << "INSERT INTO lecturer (FirstName, LastName, Gender, Lecturer_Id, BirthDate, EmailAddress, Password, Phone_No) VALUES "
                 "('" + FirstName + "','" + LastName + "','" + Gender + "','" + Lecturer_Id + "','" + BirthDate + "','" + EmailAddress + "','" + Password + "','" + Phone_No + "')";
-    QSqlQuery query;
-    if (query.exec("INSERT INTO lecturer (FirstName, LastName, Gender, Lecturer_Id, BirthDate, EmailAddress, Password, Phone_No) VALUES "
-                   "('" + FirstName + "','" + LastName + "','" + Gender + "','" + Lecturer_Id + "','" + BirthDate + "','" + EmailAddress + "','" + Password + "','" + Phone_No + "')"))
-    {
-        currentID = query.lastInsertId().toString();
-        qDebug() << "Insert success.";
-    }
-    else
-    {
-        qDebug() << query.lastError().text();
-    }
+        QSqlQuery query;
+        if (query.exec("INSERT INTO lecturer (FirstName, LastName, Gender, Lecturer_Id, BirthDate, EmailAddress, Password, Phone_No) VALUES "
+                       "('" + FirstName + "','" + LastName + "','" + Gender + "','" + Lecturer_Id + "','" + BirthDate + "','" + EmailAddress + "','" + Password + "','" + Phone_No + "')"))
+        {
+            currentID = query.lastInsertId().toString();
+            res="Welcome";
+            qDebug() << "Insert success.";
+        }
+        else
+        {
+            qDebug() << query.lastError().text();
+        }
 
-    QString State = "Active";
-    QSqlQuery qry;
-    if(qry.exec("INSERT INTO lecturerstatus (Lecturer_Id, State) VALUES " "('"+ Lecturer_Id +"', '"+ State +"')"))
-    {
-        qDebug()<<currentID;
+        QString State = "Active";
+        QSqlQuery qry;
+        if(qry.exec("INSERT INTO lecturerstatus (Lecturer_Id, State) VALUES " "('"+ Lecturer_Id +"', '"+ State +"')"))
+        {
+            qDebug()<<currentID;
+        }
     }
-
+    catch(const char *d)
+    {
+        return d;
+    }
 
 }
 
-void Database::insertCourse(Course c)
+QString Database::insertCourse(Course c)
 {
     QString Course_Code = c.getcourseId();
     QString Course_Name = c.getcourseName();
     QString Description = c.getcourseDescrip();
     QString Credits = c.getnoOfCredits();
-
+    QString res;
     try
     {
-        if(Credits == 0)
+        if(Course_Code.isEmpty() || Course_Name.isEmpty() || Description.isEmpty() || Credits.isEmpty())
         {
-            throw "Courses must have atleast 1 credit";
+            res= "A field is empty, Please fill in all the areas required";
+            throw res;
+        }
+        try
+        {
+            if(Credits >= 1 && Credits<=3)
+            {
+                ;
+            }
+            else
+            {
+                throw "Course creduts must range between 1 and 3";
+            }
+        }
+        catch(const char *c)
+        {
+            return c;
+        }
+
+
+        qDebug() << "INSERT INTO Course (Course_Code, Course_Name, Credits, Description) "
+                "VALUES ('"+ Course_Code +"', '"+ Course_Name +"', '"+ Credits +"', '"+ Description +"')";
+        QSqlQuery query;
+        if(query.exec("INSERT INTO Course (Course_Code, Course_Name, Credits, Description) "
+                      "VALUES ('"+ Course_Code +"', '"+ Course_Name +"', '"+ Credits +"', '"+ Description +"')"))
+        {
+            currentID = query.lastInsertId().toInt();
+            qDebug() << "Insert success";
+        }
+        else
+        {
+            qDebug() << "failed to connect to database";
         }
     }
     catch(const char *c)
     {
-
-    }
-
-
-    qDebug() << "INSERT INTO Course (Course_Code, Course_Name, Credits, Description) "
-                "VALUES ('"+ Course_Code +"', '"+ Course_Name +"', '"+ Credits +"', '"+ Description +"')";
-    QSqlQuery query;
-    if(query.exec("INSERT INTO Course (Course_Code, Course_Name, Credits, Description) "
-                  "VALUES ('"+ Course_Code +"', '"+ Course_Name +"', '"+ Credits +"', '"+ Description +"')"))
-    {
-        currentID = query.lastInsertId().toInt();
-        qDebug() << "Insert success";
-    }
-    else
-    {
-        qDebug() << "failed to connect to database";
+        return c;
     }
 }
 

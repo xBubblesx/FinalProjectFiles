@@ -26,19 +26,22 @@ CONFIG += c++11
 
 SOURCES += \
     admin.cpp \
+    grade.cpp \
     gradedialog.cpp \
     lecturerscreen.cpp \
         main.cpp \
     lecturerdialog.cpp \
     course.cpp \
     Student.cpp \
+    rating.cpp \
+    ratingdialog.cpp \
     reset.cpp \
     resetdialog.cpp \
-    seqselect.cpp \
     sequence.cpp \
     studentscreen.cpp \
     suspend.cpp \
     suspenddialog.cpp \
+    transfer.cpp \
     transferdialog.cpp \
     user.cpp \
     lecturer.cpp \
@@ -51,18 +54,21 @@ SOURCES += \
 
 HEADERS += \
     admin.h \
+    grade.h \
     gradedialog.h \
     lecturerdialog.h \
     course.h \
     Student.h \
     lecturerscreen.h \
+    rating.h \
+    ratingdialog.h \
     reset.h \
     resetdialog.h \
-    seqselect.h \
     sequence.h \
     studentscreen.h \
     suspend.h \
     suspenddialog.h \
+    transfer.h \
     transferdialog.h \
     user.h \
     lecturer.h \
@@ -78,10 +84,10 @@ FORMS += \
     gradedialog.ui \
     lecturerdialog.ui \
     lecturerscreen.ui \
+    ratingdialog.ui \
     resetdialog.ui \
     searchdialog.ui \
     coursedialog.ui \
-    seqselect.ui \
     studentdialog.ui \
     loginscreen.ui \
     sequencedialog.ui \

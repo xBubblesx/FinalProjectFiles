@@ -2,6 +2,7 @@
 #define LECTURERSCREEN_H
 
 #include <QDialog>
+#include "searchdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Lecturerscreen; }
@@ -25,7 +26,10 @@ public slots:
 private slots:
     void on_logOutButton_clicked();
 
+    void on_searchstudentButton_clicked();
+
 private:
     Ui::Lecturerscreen *ui;
+    Searchdialog srch;
 };
 #endif // LECTURERSCREEN_H

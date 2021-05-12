@@ -99,9 +99,9 @@ background-color: rgb(60, 4, 76);</string>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>144</y>
-     <width>250</width>
+     <x>71</x>
+     <y>141</y>
+     <width>279</width>
      <height>111</height>
     </rect>
    </property>
@@ -384,7 +384,7 @@ background-color: rgb(60, 4, 76);</string>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>98</width>
+          <width>18</width>
           <height>20</height>
          </size>
         </property>
@@ -398,6 +398,31 @@ background-color: rgb(60, 4, 76);</string>
         <item>
          <property name="text">
           <string>None</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Galen University</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Muffles Junior College</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>St. John's Junior College</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Corozal Junior College</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Corozal Community College</string>
          </property>
         </item>
        </widget>
